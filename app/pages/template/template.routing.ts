@@ -6,4 +6,4 @@ const templateRoutes: Routes = [
     { path: "template", component: TemplateComponent },
 ]
 
-export const signInRouting: ModuleWithProviders = RouterModule.forChild(templateRoutes);
+export const templateRouting: ModuleWithProviders = RouterModule.forChild(templateRoutes);

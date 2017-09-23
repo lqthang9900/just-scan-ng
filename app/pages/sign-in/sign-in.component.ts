@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'sign-in',
-	templateUrl: './sign-in.component.html',
-	styleUrls: ['./sign-in.component.css']
+	moduleId: module.id,
+	templateUrl: './sign-in.html',
+	styleUrls: ['./sign-in.css']
 })
 
 export class SignInComponent implements OnInit {
