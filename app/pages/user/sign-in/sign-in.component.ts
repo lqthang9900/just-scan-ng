@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { verifyInput, Utils, Config } from '../../shared';
+import { verifyInput, Utils, Config } from '../../../shared';
 import { isAndroid } from 'platform';
 import { topmost } from 'ui/frame';
-
 
 @Component({
 	selector: 'sign-in',
@@ -33,7 +32,7 @@ export class SignInComponent implements OnInit {
 				error: false,
 				placeHolder: "Tài khoản",
 				value: ""
-			}, 
+			},
 			password: {
 				label: "Mật khẩu",
 				type: "password",
@@ -54,12 +53,7 @@ export class SignInComponent implements OnInit {
 				value: ""
 			},
 		}
-		if (isAndroid) {
-
-		}
-		else {
-			topmost().ios.controller.navigationBar.barStyle = 1;
-		}
+		
 	}
 
 	ngOnInit() {
@@ -83,7 +77,7 @@ export class SignInComponent implements OnInit {
 			console.log('id: ' + this.signInConfig.userName.value);
 			console.log('password: ' + this.signInConfig.password.value);
 		}
-		
+
 	}
 
 	signUp(args) {

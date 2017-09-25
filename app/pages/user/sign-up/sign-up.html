@@ -1,0 +1,44 @@
+<CardView shadowRadius="5">
+    <GridLayout rows="auto,auto,auto,auto,auto,auto,auto,auto,auto" columns="auto,*,auto" class="m-x-20 p-t-10" marginTop="10" backgroundColor="white"
+        borderRadius="8">
+
+        <Label row="0" col="0" [text]="'fa-user-circle' | fonticon" textWrap="true" class="fa m-x-10" [color]="signUpConfig.name.error ? '#F44336' : '#26A69A'"
+            fontSize="20"></Label>
+        <TextField row="0" col="1" [text]="signUpConfig.name.value" [hint]="signUpConfig.name.placeHolder" [id]="signUpConfig.name.id"
+            (blur)="checkInput($event)" fontSize="18"></TextField>
+        <Label row="0" col="2" [text]="'fa-times-circle' | fonticon" [visibility]="signUpConfig.name.error ? 'visible' : 'collapsed'"
+            textWrap="true" class="fa m-x-10" color="#F44336" fontSize="20"></Label>
+
+        <StackLayout row="1" col="0" colSpan="3" class="hr-light m-y-10"></StackLayout>
+
+        <Label row="2" col="0" [text]="'fa-user-o' | fonticon" textWrap="true" class="fa m-x-10" [color]="signUpConfig.userName.error ? '#F44336' : '#26A69A'"
+            fontSize="20"></Label>
+        <TextField row="2" col="1" [text]="signUpConfig.userName.value" [hint]="signUpConfig.userName.placeHolder" [id]="signUpConfig.userName.id"
+            (blur)="checkInput($event)" fontSize="18"></TextField>
+        <Label row="2" col="2" [text]="'fa-times-circle' | fonticon" [visibility]="signUpConfig.userName.error ? 'visible' : 'collapsed'"
+            textWrap="true" class="fa m-x-10" color="#F44336" fontSize="20"></Label>
+
+        <StackLayout row="3" col="0" colSpan="3" class="hr-light m-y-10"></StackLayout>
+
+        <Label row="4" col="0" [text]="'fa-lock' | fonticon" textWrap="true" class="fa m-x-10" [color]="signUpConfig.password.error ? '#F44336' : '#26A69A'"
+            fontSize="20"></Label>
+        <TextField row="4" col="1" [text]="signUpConfig.password.value" [hint]="signUpConfig.password.placeHolder" [id]="signUpConfig.password.id"
+            (blur)="checkInput($event)" fontSize="18" secure="true"></TextField>
+        <Label row="4" col="2" [text]="'fa-times-circle' | fonticon" [visibility]="signUpConfig.password.error ? 'visible' : 'collapsed'" textWrap="true"
+            class="fa m-x-10" color="#F44336" fontSize="20"></Label>
+
+        <StackLayout row="5" col="0" colSpan="3" class="hr-light m-y-10"></StackLayout>
+
+        <Label row="6" col="0" [text]="'fa-unlock-alt' | fonticon" textWrap="true" class="fa m-x-10" [color]="signUpConfig.rePassword.error ? '#F44336' : '#26A69A'"
+            fontSize="20"></Label>
+        <TextField row="6" col="1" [text]="signUpConfig.rePassword.value" [hint]="signUpConfig.rePassword.placeHolder" [id]="signUpConfig.rePassword.id"
+            (blur)="checkInput($event)" fontSize="18" secure="true"></TextField>
+        <Label row="6" col="2" [text]="'fa-times-circle' | fonticon" [visibility]="signUpConfig.rePassword.error ? 'visible' : 'collapsed'" textWrap="true"
+            class="fa m-x-10" color="#F44336" fontSize="20"></Label>
+
+        <StackLayout row="7" col="0" colSpan="3" class="hr-light m-t-10"></StackLayout>
+
+        <Button row="8" col="0" colSpan="3" text="Đăng ký" class="btn-active" paddingTop="15" paddingBottom="15"
+            backgroundColor="#4E7CBF" fontSize="18" color="white"></Button>
+    </GridLayout>
+</CardView>

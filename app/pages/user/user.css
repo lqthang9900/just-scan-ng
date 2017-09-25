@@ -1,0 +1,50 @@
+.screen-type {
+    color: #e2e3e9;
+    margin: 0;
+    padding: 0;
+}
+
+.red-dot {
+    background-color: #F44336;
+    margin-top: 5;
+    width: 4;
+    height: 4;
+    border-radius: 2;
+}
+
+.animationShowLong {
+    animation-name: show;
+    animation-duration: 1;
+}
+
+.animationShow {
+    animation-name: show;
+    animation-duration: 0.4;
+}
+
+.animationHide {
+    animation-name: hide;
+    animation-duration: 0.4;
+}
+
+@keyframes show {
+    from { 
+        transform: scale(0.8, 0.8);
+        opacity: 0; 
+    }
+    to { 
+        transform: none;
+        opacity: 1; 
+    }
+}
+
+@keyframes hide {
+    from { 
+        transform: none;
+        opacity: 1; 
+    }
+    to { 
+        transform: scale(0.8, 0.8);
+        opacity: 0; 
+    }
+}

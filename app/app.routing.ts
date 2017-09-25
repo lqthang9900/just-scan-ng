@@ -3,8 +3,8 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 
 
-const routes: Routes = [
-    { path: "", redirectTo: "sign-in", pathMatch: "full" },
+export const routes: Routes = [
+    { path: "", redirectTo: "user", pathMatch: "full" },
 ];
 
 @NgModule({
