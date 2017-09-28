@@ -5,9 +5,8 @@ import { Observable } from 'data/observable';
         * fielId: id of configObject, argsObject (ex: args.object.id)
         * pageModel: page model
         * config: Object Config (ex: signUpConfig)
-        * configName: name of object config (ex 'signUpConfig'), configName used by notifyPropertyChange method
 */
-export function verifyInput(fieldId: string, pageModel: any, config: any, configName: string) {
+export function verifyInput(fieldId: string, pageModel: any, config: any) {
     var field: any;
     for (var i in config) {
         if (config[i].id == fieldId) {
@@ -24,24 +23,18 @@ export function verifyInput(fieldId: string, pageModel: any, config: any, config
                 case 'required':
                     field = checkRequired(field);
                     if (field.errors[i].error) {
-                        // if error, Update view to show error
-                        pageModel.notifyPropertyChange.call(pageModel, configName, config);
                         return false;
                     }
                     break;
                 case 'length':
                     field = checkLength(field);
                     if (field.errors[i].error) {
-                        // if error, Update view to show error
-                        pageModel.notifyPropertyChange.call(pageModel, configName, config);
                         return false;
                     }
                     break;
                 case 'format':
                     field = checkFormat(field);
                     if (field.errors[i].error) {
-                        // if error, Update view to show error
-                        pageModel.notifyPropertyChange.call(pageModel, configName, config);
                         return false;
                     }
                     break;
@@ -49,16 +42,12 @@ export function verifyInput(fieldId: string, pageModel: any, config: any, config
                     var fieldIdMatch = field.matchField;
                     field = checkMatch(field, config[fieldIdMatch].value);
                     if (field.errors[i].error) {
-                        // if error, Update view to show error
-                        pageModel.notifyPropertyChange.call(pageModel, configName, config);
                         return false;
                     }
                     break;
                 case 'invalid':
                     field = checkInvalid(field);
                     if (field.errors[i].error) {
-                        // if error, Update view to show error
-                        pageModel.notifyPropertyChange.call(pageModel, configName, config);
                         return false;
                     }
                     break;
@@ -67,7 +56,6 @@ export function verifyInput(fieldId: string, pageModel: any, config: any, config
             }
         }
     }
-    pageModel.notifyPropertyChange.call(pageModel, configName, config);
     return true;
 }
 

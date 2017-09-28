@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { isAndroid } from 'platform';
-import { topmost } from 'ui/frame';
+import { Utils } from "../../shared";
 import { SignInComponent } from './sign-in';
 import { SignUpComponent } from './sign-up';
 
@@ -19,12 +18,7 @@ export class UserComponent implements OnInit {
 	constructor() {
 		this.showScreen = 'signin';
 		this.showScreenTabView = 'signin';
-		if (isAndroid) {
-
-		}
-		else {
-			topmost().ios.controller.navigationBar.barStyle = 1;
-		}
+		Utils.setLightStatusBar();
 	}
 
 	onChangeViewTap(type) {

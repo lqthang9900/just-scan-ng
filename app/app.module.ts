@@ -6,8 +6,15 @@ import { AppComponent } from "./app.component";
 import { registerElement } from "nativescript-angular/element-registry";
 import { routes } from "./app.routing";
 
+// import { NativeScriptUISideDrawerModule } from "nativescript-pro-ui/sidedrawer/angular";
+// import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angular";
+// import { NativeScriptUICalendarModule } from "nativescript-pro-ui/calendar/angular";
+// import { NativeScriptUIChartModule } from "nativescript-pro-ui/chart/angular";
+// import { NativeScriptUIDataFormModule } from "nativescript-pro-ui/dataform/angular";
+// import { NativeScriptUIAutoCompleteTextViewModule } from "nativescript-pro-ui/autocomplete/angular";
+// import { NativeScriptUIGaugesModule } from "nativescript-pro-ui/gauges/angular";
 
-import { UserModule } from "./pages/index";
+import { UserModule, FirstModule, ProfileModule } from "./pages/index";
 import { setStatusBarColors } from "./shared/tools";
 
 registerElement("CardView", () => require("nativescript-cardview").CardView);
@@ -24,7 +31,12 @@ setStatusBarColors();
         NativeScriptRouterModule,
         NativeScriptRouterModule.forRoot(routes),
         AppRoutingModule,
-        UserModule
+        // NativeScriptUISideDrawerModule,
+        // NativeScriptUIListViewModule,
+        // NativeScriptUIDataFormModule,
+        UserModule,
+        FirstModule, 
+        ProfileModule
     ],
     declarations: [
         AppComponent

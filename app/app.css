@@ -1,5 +1,6 @@
 @import "nativescript-theme-core/css/core.light.css";
 @import url("./platform.css");
+@import "animation.css";
 
 .quick-sand{
     font-family: 'quicksand-regular','Quicksand';

@@ -7,6 +7,9 @@ import * as utils from "utils/utils";
 import * as Connectivity from "connectivity";
 import dialogs = require("ui/dialogs");
 // import { BarcodeScanner } from 'nativescript-barcodescanner';
+import { isAndroid } from 'platform';
+import { topmost } from 'ui/frame';
+
 var frame = require('ui/frame');
 const pageCommon = require("ui/page/page-common").PageBase;
 var LoadingIndicator = require("nativescript-loading-indicator").LoadingIndicator;
@@ -20,6 +23,15 @@ var optionsIndicator = {
 };
 export class Utils {
 
+    public static setLightStatusBar() {
+        if (app.android) {
+
+        }
+        else {
+            topmost().ios.controller.navigationBar.barStyle = 1;
+        }
+    }
+
     public static hideScrollViewBar(scrollView: any) {
         if (app.android) {
             scrollView.android.setVerticalScrollBarEnabled(false);
@@ -30,8 +42,8 @@ export class Utils {
     }
 
     public static trackAndroidKeyboard() {
-        if (!frame.topmost()) { setTimeout( Utils.trackAndroidKeyboard, 100); return; }
-        if (!frame.topmost().currentPage) { setTimeout( Utils.trackAndroidKeyboard, 100); return; }
+        if (!frame.topmost()) { setTimeout(Utils.trackAndroidKeyboard, 100); return; }
+        if (!frame.topmost().currentPage) { setTimeout(Utils.trackAndroidKeyboard, 100); return; }
 
         var cv = frame.topmost().currentPage.android;
         var softButtonHeight = Utils.getSoftButtonHeight();
@@ -44,9 +56,9 @@ export class Utils {
                 var screenHeight = cv.getRootView().getHeight();
                 var missingSize = screenHeight - rect.bottom;
                 if (missingSize > (screenHeight * 0.15)) {
-                    notifyKeyboard(true,  Math.round(missingSize / density - softButtonHeight)); // exchange Pixel to DP and minius softButtonHeight
+                    notifyKeyboard(true, Math.round(missingSize / density - softButtonHeight)); // exchange Pixel to DP and minius softButtonHeight
                 } else {
-                    notifyKeyboard(false,  Math.round(missingSize / density - softButtonHeight));
+                    notifyKeyboard(false, Math.round(missingSize / density - softButtonHeight));
                 }
             }
         }));
@@ -143,7 +155,7 @@ export class Utils {
             }
         }
     }
-    
+
     public static navigate(path: string, clearHistory?: boolean, data?: any) {
         if (path) {
             try {

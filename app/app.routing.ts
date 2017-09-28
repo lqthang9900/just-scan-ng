@@ -4,7 +4,7 @@ import { Routes } from "@angular/router";
 
 
 export const routes: Routes = [
-    { path: "", redirectTo: "user", pathMatch: "full" },
+    { path: "", redirectTo: "first", pathMatch: "full" },
 ];
 
 @NgModule({
