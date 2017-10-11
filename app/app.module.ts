@@ -14,6 +14,8 @@ import { routes } from "./app.routing";
 // import { NativeScriptUIAutoCompleteTextViewModule } from "nativescript-pro-ui/autocomplete/angular";
 // import { NativeScriptUIGaugesModule } from "nativescript-pro-ui/gauges/angular";
 
+import { BarcodeScanner } from 'nativescript-barcodescanner';
+
 import { UserModule, FirstModule, ProfileModule } from "./pages/index";
 import { setStatusBarColors } from "./shared/tools";
 
@@ -42,6 +44,7 @@ setStatusBarColors();
         AppComponent
     ],
     providers: [
-    ],
+        BarcodeScanner
+    ]
 })
 export class AppModule { }

@@ -1,8 +1,8 @@
-<ActionBar title="" icon="" class="action-bar" backgroundColor="#3F4050" color="white" flat="true">
-    <Label horizontalAlignment="center" text="Thông tin tài khoản"></Label>
+<ActionBar title="" icon="" class="action-bar" backgroundColor="#3F4050" color="white" ios:flat="true">
+    <Label horizontalAlignment="center" verticalAlignment="center" text="Thông tin tài khoản"></Label>
     <ActionItem ios.position="right" (tap)="onSaveTap()">
         <StackLayout>
-            <Label text="Lưu" color="white" android:marginRight="10"></Label>
+            <Label text="Lưu" color="white" android:marginRight="10" horizontalAlignment="center" verticalAlignment="center"></Label>
         </StackLayout>
     </ActionItem>
 </ActionBar>
@@ -11,37 +11,37 @@
         <Button dock="bottom" text="Đổi mật khẩu" class="m-b-20" fontSize="18" [nsRouterLink]="['/change-password']" nsRouterLinkActive="active"></Button>
         <RadDataForm [source]="user" dock="top">
             <TKPropertyGroup tkDataFormGroups tkPropertyGroupTitleStyle collapsible="true" name="Thông tin cá nhân" hidden="false" fillColor="#e6e6e6">
-                <TKEntityProperty tkPropertyGroupProperties name="name" displayName="Họ tên">
+                <TKEntityProperty tkPropertyGroupProperties name="name" displayName="Họ tên" index="0">
                     <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
                     <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Vui lòng điền họ tên"></TKNonEmptyValidator>
                     <TKMaximumLengthValidator tkEntityPropertyValidators errorMessage="Họ tên tối đa 100 ký tự" length="100"></TKMaximumLengthValidator>
                 </TKEntityProperty>
-                <TKEntityProperty tkPropertyGroupProperties name="age" displayName="Tuổi">
-                    <TKPropertyEditor tkEntityPropertyEditor type="Number"></TKPropertyEditor>
-                    <TKRangeValidator tkEntityPropertyValidators errorMessage="Tuổi không thể nhỏ hơn 1" minimum="1"></TKRangeValidator>
-                </TKEntityProperty>
-                <TKEntityProperty tkPropertyGroupProperties name="phone" displayName="Số điện thoại">
-                    <TKPropertyEditor tkEntityPropertyEditor type="Phone"></TKPropertyEditor>
-                    <TKPhoneValidator tkEntityPropertyValidators errorMessage="Số điện thoại không chính xác"></TKPhoneValidator>
-                </TKEntityProperty>
-                <TKEntityProperty tkPropertyGroupProperties name="email" displayName="E-mail">
+                <TKEntityProperty tkPropertyGroupProperties name="email" displayName="E-mail" index="1">
                     <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>
                     <TKEmailValidator tkEntityPropertyValidators errorMessage="E-mail không đúng định dạng"></TKEmailValidator>
                 </TKEntityProperty>
-                <TKEntityProperty tkPropertyGroupProperties name="gender" displayName="Giới tính" valuesProvider="Nam, Nữ">
+                <TKEntityProperty tkPropertyGroupProperties name="phone" displayName="Số điện thoại" index="2">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Phone"></TKPropertyEditor>
+                    <TKPhoneValidator tkEntityPropertyValidators errorMessage="Số điện thoại không chính xác"></TKPhoneValidator>
+                </TKEntityProperty>
+                <TKEntityProperty tkPropertyGroupProperties name="age" displayName="Tuổi" index="3">
+                    <!-- <TKPropertyEditor tkEntityPropertyEditor type="Number"></TKPropertyEditor>
+                    <TKRangeValidator tkEntityPropertyValidators errorMessage="Tuổi không thể nhỏ hơn 1" minimum="1"></TKRangeValidator> -->
+                </TKEntityProperty>
+                <TKEntityProperty tkPropertyGroupProperties name="gender" displayName="Giới tính" valuesProvider="Nam, Nữ" index="4">
                     <TKPropertyEditor tkEntityPropertyEditor type="SegmentedEditor"></TKPropertyEditor>
                 </TKEntityProperty>
             </TKPropertyGroup>
             <TKPropertyGroup tkDataFormGroups tkPropertyGroupTitleStyle collapsible="true" name="Địa chỉ" hidden="false" fillColor="#e6e6e6">
-                <TKEntityProperty tkPropertyGroupProperties name="street" displayName="Đường">
+                <TKEntityProperty tkPropertyGroupProperties name="street" displayName="Đường" index="5">
                     <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
                     <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Vui lòng tên đường, số nhà"></TKNonEmptyValidator>
                 </TKEntityProperty>
-                <TKEntityProperty tkPropertyGroupProperties name="district" displayName="Quận/Huyện">
+                <TKEntityProperty tkPropertyGroupProperties name="district" displayName="Quận/Huyện" index="6">
                     <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
                     <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Vui lòng điền quận/huyện"></TKNonEmptyValidator>
                 </TKEntityProperty>
-                <TKEntityProperty tkPropertyGroupProperties name="city" displayName="Thành phố" [valuesProvider]="cityList">
+                <TKEntityProperty tkPropertyGroupProperties name="city" displayName="Thành phố" [valuesProvider]="cityList" index="7">
                     <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
                 </TKEntityProperty>
             </TKPropertyGroup>

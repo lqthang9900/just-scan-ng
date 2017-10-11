@@ -2,19 +2,17 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NgModule } from "@angular/core";
 
-import { firstRouting } from "./first.routing";
-import { FirstComponent } from "./first.component";
-import { ScanModule } from "../../shared/components";
+import { scanRouting } from "./scan.routing";
+import { ScanComponent } from "./scan.component";
 
-@NgModule ({
+@NgModule({
     imports: [
         NativeScriptModule,
         NativeScriptFormsModule,
-        ScanModule,
-        firstRouting,
+        scanRouting,
     ],
     declarations: [
-        FirstComponent
+        ScanComponent
     ]
 })
-export class FirstModule {}
+export class ScanModule { }

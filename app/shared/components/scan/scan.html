@@ -1,0 +1,19 @@
+
+<GridLayout rows="*">
+    <Placeholder row="0" (creatingView)="creatingView($event)"></Placeholder>
+    <!-- <StackLayout row="0" orientation="horizontal" height="50" verticalAlignment="bottom" marginBottom="10">
+        <StackLayout width="68%" horizontalAlignment="left">
+            <Button height="40" fontSize="15" text="{{buttonMaunalText}}" tap="goBackAndTypeBarCode" horizontalAlignment="center" borderRadius="25%"
+                color="white" backgroundColor="#005dab" class="btn-active p-x-15"></Button>
+        </StackLayout>
+        <StackLayout width="32%" horizontalAlignment="right">
+            <Button height="40" fontSize="15" text="Đóng" tap="goBack" horizontalAlignment="center" borderRadius="25%" color="white"
+                backgroundColor="#005dab" class="btn-active p-x-20"></Button>
+        </StackLayout>
+
+    </StackLayout> -->
+    <Label text="0000" textWrap="true"></Label> 
+    <Button text="closeModal" (tap)="closeModal($event)"></Button>
+    
+
+</GridLayout>

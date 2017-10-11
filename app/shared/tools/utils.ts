@@ -6,7 +6,7 @@ import { Page } from "ui/page";
 import * as utils from "utils/utils";
 import * as Connectivity from "connectivity";
 import dialogs = require("ui/dialogs");
-// import { BarcodeScanner } from 'nativescript-barcodescanner';
+import { BarcodeScanner } from 'nativescript-barcodescanner';
 import { isAndroid } from 'platform';
 import { topmost } from 'ui/frame';
 
@@ -17,7 +17,6 @@ var page = new Page();
 declare var android: any;
 var loader = new LoadingIndicator();
 // var barcodescanner = new BarcodeScanner();
-var oldMissingSize = 0;
 var optionsIndicator = {
     message: 'Đang tải...'
 };
@@ -40,44 +39,6 @@ export class Utils {
             scrollView.ios.showsVerticalScrollIndicator = false;
         }
     }
-
-    public static trackAndroidKeyboard() {
-        if (!frame.topmost()) { setTimeout(Utils.trackAndroidKeyboard, 100); return; }
-        if (!frame.topmost().currentPage) { setTimeout(Utils.trackAndroidKeyboard, 100); return; }
-
-        var cv = frame.topmost().currentPage.android;
-        var softButtonHeight = Utils.getSoftButtonHeight();
-        var density = utils.ad.getApplicationContext().getResources().getDisplayMetrics().density;
-        cv.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener({
-            onGlobalLayout: function () {
-                // Grab the Current Screen Height
-                var rect = new android.graphics.Rect();
-                cv.getWindowVisibleDisplayFrame(rect);
-                var screenHeight = cv.getRootView().getHeight();
-                var missingSize = screenHeight - rect.bottom;
-                if (missingSize > (screenHeight * 0.15)) {
-                    notifyKeyboard(true, Math.round(missingSize / density - softButtonHeight)); // exchange Pixel to DP and minius softButtonHeight
-                } else {
-                    notifyKeyboard(false, Math.round(missingSize / density - softButtonHeight));
-                }
-            }
-        }));
-
-        function notifyKeyboard(isShown, missingSize) {
-            // For a notification to occur, the frame, topmost() and currentPage has to exist; so we won't bother checking again...
-            if (oldMissingSize == missingSize) {
-                // avoid call onKeyboard while keyboard open
-                return;
-            }
-            var currentPage = frame.topmost().currentPage;
-            if (currentPage.exports && typeof currentPage.exports.onKeyboard == "function") {
-                oldMissingSize = missingSize;
-                currentPage.exports.onKeyboard({ showing: isShown, missingSize: missingSize, object: currentPage });
-            }
-
-        }
-    }
-
 
     public static numberToFormatedString(num: any) {
         var str = num.toString();
@@ -208,6 +169,7 @@ export class Utils {
     }
 
     public static scanBarCode(page: any, callBackFunction: Function, closeCallbackFunction?: Function, buttonMaunalText?: string) {
+        var barcodescanner = new BarcodeScanner();
         if (!closeCallbackFunction) {
             closeCallbackFunction = function () { console.log('close scan modal'); };
         }
